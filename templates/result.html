@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .personal-icon {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 100px; /* Tăng kích thước biểu tượng */
+            height: 100px; /* Tăng kích thước biểu tượng */
+            background: url('/static/image/icon.png') no-repeat center center;
+            background-size: contain; /* Đảm bảo kích thước biểu tượng phù hợp */
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle, #000 0%, #333 100%); /* Gradient từ đen đến xám tối */
+            color: #fff;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: gradientShift 10s ease infinite; /* Thay đổi gradient nền liên tục */
+        }
+
+        .container {
+            background: #1c1c1c;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            max-width: 700px;
+            width: 100%;
+            height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideIn 1s ease-in-out, fadeIn 1s ease-in-out;
+            border: 1px solid #444;
+        }
+
+        .container .icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 1.5em;
+            color: #fff;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .container .icon:hover {
+            transform: rotate(-15deg); /* Hiệu ứng xoay nhẹ khi hover */
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        #result {
+            font-size: 1.2em;
+            margin: 20px 0;
+            padding: 20px;
+            background: #000;
+            border-radius: 8px;
+            border: 1px solid #444;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            color: #fff;
+            white-space: pre-wrap;
+            text-align: left;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #ff7e5f; /* Màu nền giống như ví dụ */
+            text-decoration: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            margin-top: 20px;
+            display: block;
+            text-align: center;
+        }
+
+        .button:hover {
+            background-color: #feb47b; /* Màu nền khi hover */
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .button:active {
+            background-color: #ff6f61; /* Màu nền khi nhấn */
+            transform: scale(0.95);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background: radial-gradient(circle, #000 0%, #333 100%);
+            }
+            50% {
+                background: radial-gradient(circle, #333 0%, #000 100%);
+            }
+            100% {
+                background: radial-gradient(circle, #000 0%, #333 100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="personal-icon"></div> <!-- Biểu tượng cá nhân -->
+    <div class="container">
+        <h1>Result:</h1>
+        <div id="result">{{ answer }}</div>
+        <a href="/asking" class="button">Go Back to Asking</a>
+    </div>
+</body>
+</html>
